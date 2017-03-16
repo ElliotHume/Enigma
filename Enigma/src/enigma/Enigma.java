@@ -207,32 +207,6 @@ public class Enigma extends BasicGame {
         
         public String action(String keyword, Graphics g){
             
-            if (keyword != null){
-                if (keyword.equals(">Apophis")){
-                    apophis = true;
-                    return "the vault opens for you...";
-                }
-                
-                if(apophis){
-                    if (keyword.equals(">drawer lock")){
-                        return "11, 0, 19";
-                    }
-                    else if (keyword.equals(">onq")){
-                        return "single tap";
-                    }
-                    else if (keyword.equals(">league")){
-                        return "hold";
-                    }
-                    else if (keyword.equals(">itunes")){
-                        return "double tap";
-                    }
-                    else if (keyword.equals(">ezweb")){
-                        return "hold";
-                    } 
-                } 
-            }
-           
-            
             if (!active){
                 if (keyword.equals(">start")){
                     active = true;
