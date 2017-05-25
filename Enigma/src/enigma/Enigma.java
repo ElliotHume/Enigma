@@ -51,13 +51,6 @@ public class Enigma extends BasicGame {
             smallFont = new TrueTypeFont(awtFont2, false);
             previous = new ArrayList<String>();
             
-            keywords.add(">enigma");
-            keywords.add(">drawer lock");
-            keywords.add(">league");
-            keywords.add(">onq");
-            keywords.add(">ezweb");
-            keywords.add(">itunes");
-            
             nextAnim = new Image[12];
             for (int i=1; i <= nextAnim.length-6 ; i++){
                 String filePath = "puzzles/images/animations/anim"+String.valueOf(i)+".png";
