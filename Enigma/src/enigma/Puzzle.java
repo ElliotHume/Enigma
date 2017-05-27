@@ -22,6 +22,7 @@ public class Puzzle {
     public String[] text;
     public Image pic;
     public String[] keys;
+    public String google;
     
     
     public Puzzle(int Sequence){
@@ -69,9 +70,9 @@ public class Puzzle {
             contentsList = contents.split("~");
             this.name = contentsList[0];
             this.text = contentsList[1].split("_");
-            this.keys = contentsList[3].split("_");
+            this.keys = contentsList[4].split("_");
+            this.google = contentsList[3];
             this.pic = new Image(contentsList[2]);
-            
             
         } catch (Exception ex) {
             System.out.println(ex);

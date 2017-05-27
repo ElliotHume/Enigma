@@ -36,6 +36,8 @@ public class Enigma extends BasicGame {
         public Image[] nextAnim;
         public boolean completed = false;
         public Music ambience;
+        public Image googleCheck;
+        public Image googlex;
         
         public int amount = 20;
         
@@ -50,6 +52,16 @@ public class Enigma extends BasicGame {
             Font awtFont2 = new Font("Times New Roman", Font.ITALIC, 18);
             smallFont = new TrueTypeFont(awtFont2, false);
             previous = new ArrayList<String>();
+            googleCheck = new Image("puzzles/images/googlecheck.png");
+            googlex = new Image("puzzles/images/googlex.png");
+            
+            
+            keywords.add(">enigma");
+            keywords.add(">drawer lock");
+            keywords.add(">league");
+            keywords.add(">onq");
+            keywords.add(">ezweb");
+            keywords.add(">itunes");
             
             nextAnim = new Image[12];
             for (int i=1; i <= nextAnim.length-6 ; i++){
@@ -158,10 +170,14 @@ public class Enigma extends BasicGame {
                         g.setColor(Color.red);
                     } else {
                         g.setColor(Color.green);
-                    }
-
-                    if (active){
                         puzzle.display(10, 10, g);
+                        
+                        g.drawString("Google allowed:", 420,858);
+                        if (puzzle.google.equals("true")){
+                            googleCheck.draw(550, 850);
+                        } else {
+                            googlex.draw(550, 850);
+                        }
                     }
 
                     g.drawString(keyword, 10, keyHeight);
@@ -200,6 +216,32 @@ public class Enigma extends BasicGame {
         
         public String action(String keyword, Graphics g){
             
+            if (keyword != null){
+                if (keyword.equals(">Apophis")){
+                    apophis = true;
+                    return "the vault opens for you...";
+                }
+                
+                if(apophis){
+                    if (keyword.equals(">drawer lock")){
+                        return "11, 0, 19";
+                    }
+                    else if (keyword.equals(">onq")){
+                        return "single tap";
+                    }
+                    else if (keyword.equals(">league")){
+                        return "hold";
+                    }
+                    else if (keyword.equals(">itunes")){
+                        return "double tap";
+                    }
+                    else if (keyword.equals(">ezweb")){
+                        return "hold";
+                    } 
+                } 
+            }
+           
+            
             if (!active){
                 if (keyword.equals(">start")){
                     active = true;
@@ -225,7 +267,7 @@ public class Enigma extends BasicGame {
                         completed = true;
                         return "Puzzle skipped";
                     }
-                    
+                    //System.out.println("google allowed: "+puzzle.google);
                     for (String key : puzzle.keys){
                         if (keyword.equals(key)){
                             sequence++;
